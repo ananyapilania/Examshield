@@ -69,28 +69,31 @@ ExamShield Part 1 is structured as a modular, lightweight security prototype foc
 
 ## 3. Database Schema (SQLite)
 
-### Table: `exam_papers`
+### Table: `exams`
 Stores metadata and cryptographic hashes for registered examination papers.
 
 | Column | Type | Constraints | Description |
 | :--- | :--- | :--- | :--- |
 | `exam_id` | TEXT | PRIMARY KEY | Unique Examination Identifier (e.g., `EXAM-2026-CS101`) |
-| `title` | TEXT | NOT NULL | Title / Subject Name |
-| `file_name` | TEXT | NOT NULL | Name of uploaded document |
-| `sha256_hash` | TEXT | NOT NULL | 64-character SHA-256 hex string |
-| `created_at` | DATETIME | NOT NULL | Registration timestamp (UTC) |
-| `status` | TEXT | NOT NULL | `REGISTERED`, `VERIFIED`, `FLAGGED` |
+| `exam_name` | TEXT | NOT NULL | Title / Display Name of the Examination |
+| `subject` | TEXT | NOT NULL | Subject / Course Name |
+| `academic_year` | TEXT | NOT NULL | Academic Session / Year (e.g., `2025-2026`) |
+| `paper_version` | TEXT | NOT NULL | Version / Set Identifier (e.g., `Set-A`, `v1.0`) |
+| `file_hash` | TEXT | NOT NULL | 64-character lowercase hexadecimal SHA-256 fingerprint |
+| `created_at` | TEXT | NOT NULL | Registration ISO 8601 UTC timestamp |
+| `status` | TEXT | NOT NULL | `REGISTERED`, `VERIFIED`, `FLAGGED`, `TAMPER_DETECTED` |
 
 ### Table: `audit_logs`
 Chronological event logging for operations and security checks.
 
 | Column | Type | Constraints | Description |
 | :--- | :--- | :--- | :--- |
-| `id` | INTEGER | PRIMARY KEY AUTOINCREMENT | Unique log entry ID |
-| `exam_id` | TEXT | REFERENCES `exam_papers(exam_id)` | Associated Exam ID |
-| `event_type` | TEXT | NOT NULL | `UPLOAD`, `VERIFY_SUCCESS`, `TAMPER_DETECTED` |
-| `details` | TEXT | NOT NULL | Descriptive event details & outcome |
-| `timestamp` | DATETIME | NOT NULL | Event timestamp (UTC) |
+| `event_id` | INTEGER | PRIMARY KEY AUTOINCREMENT | Unique audit log entry ID |
+| `exam_id` | TEXT | NOT NULL | Associated Exam ID |
+| `action` | TEXT | NOT NULL | `PAPER_REGISTERED`, `PAPER_VERIFIED`, `HASH_MISMATCH`, `STATUS_UPDATED` |
+| `timestamp` | TEXT | NOT NULL | ISO 8601 UTC event timestamp |
+| `result` | TEXT | NOT NULL | `SUCCESS`, `FAILURE`, `FLAGGED` |
+| `details` | TEXT | NULLABLE | Descriptive event details & outcome |
 
 ---
 

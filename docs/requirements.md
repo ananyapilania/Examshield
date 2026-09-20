@@ -25,13 +25,15 @@ Part 1 focuses on establishing the baseline security prototype for paper integri
    - The hash value serves as the immutable digital fingerprint for integrity verification.
 
 4. **Metadata Storage (SQLite)**:
-   - An SQLite database must store paper metadata, including:
+   - An SQLite database must store paper metadata in the `exams` table, including:
      - `exam_id` (Primary Key)
-     - `title` / `subject`
-     - `file_name`
-     - `sha256_hash`
-     - `upload_timestamp`
-     - `status` (e.g., `REGISTERED`, `VERIFIED`, `FLAGGED`)
+     - `exam_name` (Exam Title / Name)
+     - `subject` (Course / Subject)
+     - `academic_year` (Academic Session / Year)
+     - `paper_version` (Version / Set identifier)
+     - `file_hash` (64-character SHA-256 fingerprint)
+     - `created_at` (Registration timestamp in UTC)
+     - `status` (e.g., `REGISTERED`, `VERIFIED`, `FLAGGED`, `TAMPER_DETECTED`)
    - Database operations must ensure relational integrity and fast lookup.
 
 5. **Paper Verification & Integrity Check**:
