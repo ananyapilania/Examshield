@@ -1,0 +1,5 @@
+# ExamShield - Part 1 Dependencies
+# Lightweight core dependencies for security prototype and testing
+
+pytest>=7.4.0
+python-dotenv>=1.0.0

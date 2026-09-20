@@ -1,0 +1,82 @@
+[
+  {
+    "id": "QBK-001",
+    "subject": "Computer Science",
+    "topic": "Cryptography & Network Security",
+    "difficulty": "Medium",
+    "marks": 5,
+    "question": "Explain the role of SHA-256 in ensuring digital examination paper integrity.",
+    "options": [
+      "It encrypts the entire examination paper for transmission",
+      "It generates a unique fixed-length hash fingerprint to detect paper tampering",
+      "It automatically grades multiple choice responses",
+      "It compresses the paper file size for faster download"
+    ],
+    "correct_answer": "It generates a unique fixed-length hash fingerprint to detect paper tampering",
+    "status": "active"
+  },
+  {
+    "id": "QBK-002",
+    "subject": "Computer Science",
+    "topic": "Database Systems",
+    "difficulty": "Easy",
+    "marks": 2,
+    "question": "What is the primary benefit of maintaining an immutable audit log in examination systems?",
+    "options": [
+      "To optimize database read and write speed",
+      "To record every access, verification, and modification event for forensic traceability",
+      "To reduce disk storage consumption",
+      "To replace relational database schemas"
+    ],
+    "correct_answer": "To record every access, verification, and modification event for forensic traceability",
+    "status": "active"
+  },
+  {
+    "id": "QBK-003",
+    "subject": "Mathematics",
+    "topic": "Discrete Mathematics",
+    "difficulty": "Hard",
+    "marks": 10,
+    "question": "In cryptographic hashing, describe the avalanche effect and its significance in detecting minor file alterations.",
+    "options": [
+      "A 1-bit change in input results in approximately 50% change in hash output bits",
+      "Hash outputs remain identical for minor input typos",
+      "Input size determines the linear length of the resulting hash string",
+      "Collisions can be resolved using open addressing"
+    ],
+    "correct_answer": "A 1-bit change in input results in approximately 50% change in hash output bits",
+    "status": "active"
+  },
+  {
+    "id": "QBK-004",
+    "subject": "Software Engineering",
+    "topic": "System Security",
+    "difficulty": "Medium",
+    "marks": 5,
+    "question": "How does an Exam ID correlate paper metadata with stored cryptographic hashes in SQLite storage?",
+    "options": [
+      "By acting as a unique primary key indexing paper records, hashes, and timestamp logs",
+      "By randomly generating new passwords on each download",
+      "By converting the PDF file into plain text format",
+      "By bypassing database transaction constraints"
+    ],
+    "correct_answer": "By acting as a unique primary key indexing paper records, hashes, and timestamp logs",
+    "status": "active"
+  },
+  {
+    "id": "QBK-005",
+    "subject": "Information Security",
+    "topic": "Integrity & Verification",
+    "difficulty": "Easy",
+    "marks": 3,
+    "question": "When verifying a received exam paper against its stored hash, what condition signifies tampering?",
+    "options": [
+      "Calculated hash matches stored hash exactly",
+      "Calculated hash differs from stored hash",
+      "File name is formatted in uppercase",
+      "File creation timestamp is in UTC"
+    ],
+    "correct_answer": "Calculated hash differs from stored hash",
+    "status": "active"
+  }
+]

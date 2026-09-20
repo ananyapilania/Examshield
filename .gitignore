@@ -1,0 +1,46 @@
+# Python & Environment
+venv/
+env/
+ENV/
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Operating System & Editor Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.vscode/
+.idea/
+
+# Frontend / Node
+node_modules/
+dist/
+build/
+*.log
+
+# Database Files (SQLite)
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.sqlite3-journal
+
+# Exam Papers & Uploads (Strict Security Rule: No PDFs or real papers in Git)
+*.pdf
+papers/original/*
+!papers/original/.gitkeep
+papers/leaked/*
+!papers/leaked/.gitkeep
+uploads/
+temp/
+
+# Generated Output & Audit Logs
+logs/
+*.tmp
+*.bak
