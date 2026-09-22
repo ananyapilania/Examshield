@@ -1,6 +1,6 @@
 # ExamShield 🛡️
 > **Examination Paper Security & Integrity System**  
-> *Part 1: Security Prototype (~20% Completion Milestone for Review II)*
+> *Part 1: Security Prototype 
 
 ---
 
