@@ -14,8 +14,7 @@
 | **Team Member 1** | Security & Backend Lead | Project architecture setup, SHA-256 hashing engine, and tamper detection module | Completed (Foundation) |
 | **Team Member 2** | Database & Storage Engineer | SQLite database schema design, migration scripts, and metadata CRUD operations | Completed (Foundation) |
 | **Team Member 3** | Audit & Verification Lead | Audit log engine, verification pipeline, and automated test suite design | Completed (Foundation) |
-| **Team Member 4** | Question Bank & Fallback Lead | Backup question bank schema, `questions.json` structure, and parsing utilities | Completed (Foundation) |
-| **Team Member 5** | Documentation & Quality Assurance | Requirements documentation, test cases specification, and Git security policy enforcement | Completed (Foundation) |
+
 
 ---
 
