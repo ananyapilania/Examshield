@@ -23,7 +23,8 @@ from fastapi.testclient import TestClient
 import backend.database
 import backend.audit
 from backend.main import app
-from backend.database import initialize_database
+from backend.database import initialize_database, create_user
+from backend.auth import hash_password, create_access_token
 
 
 class TestFastAPIIntegration(unittest.TestCase):
@@ -39,7 +40,20 @@ class TestFastAPIIntegration(unittest.TestCase):
         backend.audit.DEFAULT_DB_PATH = self.test_db_path
         initialize_database(self.test_db_path)
 
+        # Create an authorized admin user for integration test suite
+        self.admin_user = create_user(
+            user_id="USR-TEST-ADMIN",
+            username="testadmin",
+            email="admin@examshield.test",
+            password_hash=hash_password("admin_secure_pass123"),
+            role="ADMIN",
+            is_active=True,
+            db_path=self.test_db_path
+        )
+        self.token, _, _ = create_access_token(self.admin_user)
+
         self.client = TestClient(app)
+        self.client.headers["Authorization"] = f"Bearer {self.token}"
 
         # Synthetic paper sample contents
         self.original_paper_bytes = b"--- SYNTHETIC EXAM PAPER: CS101 DATA STRUCTURES ---\nQ1. Define Binary Trees."

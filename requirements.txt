@@ -3,3 +3,5 @@
 
 pytest>=7.4.0
 python-dotenv>=1.0.0
+argon2-cffi>=23.1.0
+pyjwt>=2.8.0

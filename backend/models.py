@@ -37,3 +37,23 @@ class AuditEvent:
     def to_dict(self) -> Dict[str, Any]:
         """Convert the audit event to a dictionary."""
         return asdict(self)
+
+
+@dataclass
+class UserRecord:
+    """Represents an application user and role metadata."""
+    user_id: str
+    username: str
+    email: str
+    password_hash: str
+    role: str
+    is_active: bool
+    created_at: str
+    updated_at: str
+
+    def to_dict(self, include_sensitive: bool = False) -> Dict[str, Any]:
+        """Convert the user record to a dictionary, omitting password_hash by default."""
+        d = asdict(self)
+        if not include_sensitive:
+            d.pop("password_hash", None)
+        return d

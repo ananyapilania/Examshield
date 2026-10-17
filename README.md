@@ -75,6 +75,70 @@ cd Examshield
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-# 3. Install dependencies
+# 3. Install Python dependencies
 pip install -r requirements.txt
+
+# 4. Install Frontend dependencies
+cd frontend
+npm install
+cd ..
+```
+
+---
+
+## 🔑 Initial Administrator Setup
+
+ExamShield does not use insecure default credentials. Create your primary administrator account using the secure setup CLI:
+
+```bash
+# Interactive password prompt (recommended)
+python -m backend.setup_admin --username security_admin --email admin@examshield.local
+
+# Or pass password via environment variable / flag:
+python -m backend.setup_admin --username security_admin --email admin@examshield.local --password "YourStrongPassword123!"
+```
+
+- Passwords are salted and hashed using **Argon2id**.
+- Plaintext passwords are never stored in the database or logs.
+- Duplicate administrative creation is automatically prevented.
+
+---
+
+## 👥 Role-Based Access Control (RBAC)
+
+| Capability | Administrator (`ADMIN`) | Operational Staff (`STAFF`) |
+|---|:---:|:---:|
+| **Verify Candidate Papers** | ✅ | ✅ |
+| **Inspect Permitted Examination Records** | ✅ | ✅ |
+| **Register New Examination Papers** | ✅ | ❌ |
+| **View Forensic Audit Logs** | ✅ | ❌ |
+| **Manage User Accounts & Roles** | ✅ | ❌ |
+| **Activate / Deactivate Accounts** | ✅ | ❌ |
+
+---
+
+## 🖥️ Running the Application
+
+### 1. Start the FastAPI Backend
+```bash
+# Ensure virtual environment is active
+source venv/bin/activate
+uvicorn backend.main:app --reload --port 8000
+```
+Backend API will be accessible at `http://127.0.0.1:8000`. API docs available at `http://127.0.0.1:8000/docs`.
+
+### 2. Start the React Frontend
+```bash
+cd frontend
+npm run dev
+```
+Frontend development server will be available at `http://localhost:5173`.
+
+---
+
+## 🧪 Running Automated Tests
+
+```bash
+# Run complete test suite (unit, integration, and security RBAC)
+PYTHONPATH=. venv/bin/pytest -v
 ```
